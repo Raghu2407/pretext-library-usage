@@ -3,32 +3,46 @@ name: Deploy Vite Site
 on:
   push:
     branches: ["main"]
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # actions/checkout@v4.1.1
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 
+
       - name: Set up Node
-        uses: actions/setup-node@v4
+        # actions/setup-node@v4.0.1
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
+
       - name: Install dependencies
         run: npm install
+
       - name: Build
         run: npm run build
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        # actions/upload-pages-artifact@v3.0.1
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dee46217193b 
         with:
-          path: './dist' # Vite builds to this folder
+          path: './dist'
 
   deploy:
     needs: build
@@ -39,4 +53,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        # actions/deploy-pages@v4.0.4
+        uses: actions/deploy-pages@9830c25841c22caf690be562d7735d46920e1a2d
