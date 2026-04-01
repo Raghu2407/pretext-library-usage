@@ -20,14 +20,15 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
-        # actions/checkout@v4.1.1
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 
+        # actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 
 
       - name: Set up Node
-        # actions/setup-node@v4.0.1
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 
+        # actions/setup-node@v4.2.0
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a 
         with:
           node-version: 24
           cache: 'npm'
@@ -53,5 +54,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        # actions/deploy-pages@v4.0.4
-        uses: actions/deploy-pages@9830c25841c22caf690be562d7735d46920e1a2d
+        # actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@d6db90164ad5d118dc80ca1945695a82568c0765
