@@ -1,0 +1,69 @@
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+}
+
+.dashboard {
+  padding: 20px;
+  background: white;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+.comparison-grid {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 20px;
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.col-header {
+  padding: 15px;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.item {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #efefef;
+  background: #fff;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.timer {
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.lag { color: #d32f2f; }
+.fast { color: #388e3c; }
+
+input[type="range"] {
+  width: 300px;
+}
