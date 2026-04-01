@@ -10,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# This ensures only one deployment happens at a time
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -23,22 +22,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 
+
       - name: Set up Node
-        uses: actions/setup-node@v4
+        # actions/setup-node@v4.2.0
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a 
         with:
-          node-version: 24 # Using the 2026 standard
+          node-version: 24
           cache: 'npm'
+
       - name: Install dependencies
         run: npm install
+
       - name: Build
         run: npm run build
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        # actions/upload-pages-artifact@v3.0.1
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dee46217193b 
         with:
           path: './dist'
-          # This line prevents the "Multiple artifacts" error by being explicit
-          name: github-pages 
 
   deploy:
     needs: build
@@ -49,4 +53,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        # actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@d6db90164ad5d118dc80ca1945695a82568c0765
