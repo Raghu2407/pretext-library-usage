@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pretext vs DOM Performance</title>
+    <script type="module" crossorigin src="/pretext-library-usage/assets/index-nz_4x0nD.js"></script>
+    <link rel="stylesheet" crossorigin href="/pretext-library-usage/assets/index-CX8nYdgI.css">
+  </head>
+  <body>
+    <div class="dashboard">
+      <h1>Performance Comparison: 1,000 Items</h1>
+      <input type="range" id="widthSlider" min="200" max="600" value="400">
+      <p>Container Width: <b id="widthVal">400</b>px</p>
+    </div>
+
+    <div class="comparison-grid">
+      <div class="column">
+        <div class="col-header">
+          <h3>Standard DOM</h3>
+          <p>Triggers Forced Reflow</p>
+          <div class="timer lag">Time: <span id="domTime">0</span>ms</div>
+        </div>
+        <div id="domList" class="list"></div>
+      </div>
+
+      <div class="column">
+        <div class="col-header">
+          <h3>Pretext.js</h3>
+          <p>Pure Math Calculation</p>
+          <div class="timer fast">Time: <span id="pretextTime">0</span>ms</div>
+        </div>
+        <div id="pretextList" class="list"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
